@@ -60,3 +60,6 @@ public class QuickSelect {
         System.out.println(Arrays.toString(arr));
     }
 }
+
+
+// T avg = O(n), T worst = O(n^2)
