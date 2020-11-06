@@ -71,3 +71,5 @@ public class HeapSort
         printArray(arr);
     }
 } 
+
+// T avg = O(nlogn)  (always)
