@@ -1,0 +1,3 @@
+Hashmap默认乱序，通过将Entry取出并放入list+排序的方式实现对Entry的排序
+
+TreeMap默认对key升序，可以传入新的comparator改变次序。若对Value排序，则仍采用上述方法
