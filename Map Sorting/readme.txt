@@ -1,3 +1,5 @@
-Hashmap默认乱序，通过将Entry取出并放入list+排序的方式实现对Entry的排序
+Hashmap默认乱序，通过将Entry取出并放入list，并加上comparator排序的方式实现对Entry的排序
+也可以将上述的EntrySet进行堆排序
+也可以将value全部取出放入list排序，再依次找到每个value对应的key。（不推荐）
 
 TreeMap默认对key升序，可以传入新的comparator改变次序。若对Value排序，则仍采用上述方法
