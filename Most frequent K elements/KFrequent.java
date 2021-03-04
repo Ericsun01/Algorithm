@@ -38,7 +38,7 @@ public class KFrequent {
     }
 
     // method 2: heap with String element:
-    /*
+    
     public List<String> topKFrequent(String[] words, int k) {
         Map<String, Integer> map = new HashMap<String, Integer>();
         for (String word: words) {
@@ -77,5 +77,5 @@ public class KFrequent {
         Collections.reverse(ans);
         return ans;
     }
-    */
+    
 }
