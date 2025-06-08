@@ -59,3 +59,10 @@ In that operation, you are allowed to:
 2. Choose a single integer x. (x可以是任何数)
 3. Replace every element a in the chosen subarray with a + x.
 Your goal is to maximize the number of elements equal to k in th entire array after this operation.”
+
+
+1.5
+给定一个密码字符串，一个攻击数组attacker，每隔一秒会将密码字符串中attacker 位置的字符替换成 x[i], 当包含x的字串数量大于m时，
+该密码就不能恢复了，比如 abc --> axb,  子串 ax, xb, axb, x共4个，如果m=3，则该密码不能恢复。
+给定password, attacker, m, 求多少时间后密码不能恢复
+

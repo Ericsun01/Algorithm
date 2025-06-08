@@ -119,7 +119,7 @@ if start < length // 6 4 4 3 3 8
     }
 
     /**
-     * 计算多个查询下的总连接成本。
+     * 1.3 计算多个查询下的总连接成本。
      *
      * @param warehouseCapacity  仓库容量数组，0-based，长度为 n，假设已按位置非递减排序
      * @param q                  查询数量（等于 additionalHubs.size()）
@@ -170,6 +170,9 @@ if start < length // 6 4 4 3 3 8
         return results;
     }
 
+    /*
+    * 1.4
+    * */
     public static int maxEqualElementsOptimized(int[] arr, int k) {
         /**
          * 优化版本：O(n²) 时间复杂度
@@ -209,6 +212,73 @@ if start < length // 6 4 4 3 3 8
         }
 
         return maxCount;
+    }
+
+    /*
+    * 1.5
+    * */
+    /**
+     * 计算包含'x'的子串数量
+     * @param s 字符串
+     * @return 包含'x'的子串数量
+     */
+    public static int countSubstringsWithX(String s) {
+        int n = s.length();
+        int totalSubstrings = n * (n + 1) / 2;
+
+        // 计算不包含'x'的子串数量
+        int nonXSubstrings = 0;
+        int i = 0;
+
+        while (i < n) {
+            if (s.charAt(i) != 'x') {
+                // 找到连续的非'x'字符段
+                int start = i;
+                while (i < n && s.charAt(i) != 'x') {
+                    i++;
+                }
+                int length = i - start;
+                // 长度为length的字符串有length*(length+1)/2个子串
+                nonXSubstrings += length * (length + 1) / 2;
+            } else {
+                i++;
+            }
+        }
+
+        return totalSubstrings - nonXSubstrings;
+    }
+
+    /**
+     * 解决密码攻击问题
+     * @param password 原始密码字符串
+     * @param attacker 攻击位置数组
+     * @param m 阈值，超过此数量的包含'x'的子串会导致密码无法恢复
+     * @return 多少秒后密码无法恢复，如果永远不会则返回-1
+     */
+    public static int solvePasswordAttack(String password, int[] attacker, int m) {
+        char[] passwordArray = password.toCharArray();
+
+        for (int time = 0; time < attacker.length; time++) {
+            // 执行攻击：替换指定位置的字符为'x'
+            int pos = attacker[time];
+            if (pos >= 0 && pos < passwordArray.length) {
+                passwordArray[pos] = 'x';
+            }
+
+            // 计算当前包含'x'的子串数量
+            String currentPassword = new String(passwordArray);
+            int xSubstringsCount = countSubstringsWithX(currentPassword);
+
+            System.out.printf("时间 %ds: %s, 包含'x'的子串数量: %d%n",
+                    time + 1, currentPassword, xSubstringsCount);
+
+            // 检查是否超过阈值
+            if (xSubstringsCount > m) {
+                return time + 1;
+            }
+        }
+
+        return -1; // 永远不会超过阈值
     }
 
     public static void main(String[] args) {
