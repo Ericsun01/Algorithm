@@ -1,0 +1,61 @@
+题目
+1.1
+Pasting the question below, please comment if anyone has any idea how to solve this question
+Given an array 5 4 0 3 3 1, take sum of absolute differences between adjacent pairs
+i.e |5-4|+|4-0|+|0-3|+|3-3|+|3-1| = 10
+The task is to remove as many elements from the array such that the sum remains same.
+soln 1=> 5 4 0 3 1 : in this case sum of absolute differences between adjacent pairs is same as 10
+soln 2 => 5 0 3 1 : in this case as well sum of absolute differences between adjacent pairs is same as 10
+
+soln 2 is acceptable answer as it has minimum elements
+
+Example 2:
+6 4 4 3 3 2
+answer : 6 2
+
+
+1.2
+有一个长度为N的数组 inventory[]，表示每个仓库的库存量。
+每轮处理一个仓库，由你先搬 dispatch1 个货物。
+随后轮到同事；同事可以：
+搬 dispatch2 个货物，或者
+跳过（不搬），但最多只能跳过 skips 次。
+只有最后一批（最后一次搬的那部分） 是由你搬 的仓库，你和同事才能获得 1 分（credit）。
+当一个仓库的库存被搬完后，才进入下一个仓库。
+目标：设计同事什么时候跳过，以最大化总积分。
+更多例子见代码和chatGpt
+
+
+1.3
+public static List<Long> getMinConnectionCost(int n, List<Integer> warehouseCapacity, int q, List<List<Integer>> additionalHubs)
+物流网络由 n 个仓库组成，编号从 1 到 n，每个仓库都战略性地位于其对应的索引处。每个仓库 i 都有一个特定的存储容量，由 warehouseCapacity[i] 表示（假设基于 1 的索引）。
+这些仓库按存储容量非递减顺序组织，这意味着每个仓库的存储容量大于或等于其前一个仓库的存储容量。每个仓库都必须连接到一个配送中心，
+该配送中心的位置大于或等于其自身。这意味着仓库 i 只能连接到位置 j 处的配送中心，其中 j≥i。
+
+为了优化库存路由，亚马逊在最后一个位置 n 处设置了一个中央高容量配送中心。这个中心在必要时为所有仓库服务。从仓库 i 到位置 j 处的配送中心的连接成本由 warehouseCapacity[j]−warehouseCapacity[i] 给出。
+给定 q 个查询query，每个查询包含一个形式为 (hubA,hubB) 的元组，其中两个额外的高性能配送中心部署在仓库 hubA 和 hubB（1≤hubA<hubB<n）。
+目标是计算所有仓库的总连接成本，考虑到离每个仓库位置最近的可用配送中心。
+注意：
+问题陈述假设 warehouseCapacity 数组是基于 1 的索引。
+每个查询是独立的，即，更改不会在后续查询中保留。
+每个仓库连接到离它最近的中心（无论是 hubA、hubB 还是中心仓库 n）以最小化总连接成本。
+
+example:
+n = 6
+warehouseCapacity = [2, 5, 9, 12, 18, 30]
+q = 2
+additionalHubs = [
+  [2, 5],
+  [1, 3]
+]
+
+output:[18,34]
+
+
+1.4
+You are givien: An integer array arr of size n an integer k You can perform at most one operation.
+In that operation, you are allowed to:
+1. Choose a single contiguous subarray of arr.
+2. Choose a single integer x. (x可以是任何数)
+3. Replace every element a in the chosen subarray with a + x.
+Your goal is to maximize the number of elements equal to k in th entire array after this operation.”
